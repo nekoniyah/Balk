@@ -114,7 +114,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|numeric:min:1,max:65535",
+            "rules": "nullable|numeric|min:1|max:65535",
             "field_type": "text"
         },
         {

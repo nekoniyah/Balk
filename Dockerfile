@@ -6,7 +6,7 @@ ENV NODE_ENV=production \
     MAIN_PORT=3000 \
     ADDITIONAL_PORTS="" \
     SERVER_MODE="app" \
-    STARTUP_SCRIPT="start" \
+    STARTUP_SCRIPT="bun run serve" \
     STATIC_DIR="public" \
     EGG=1 \
     SERVER_MEMORY=512 \
@@ -39,4 +39,4 @@ RUN if [ -n "$ADDITIONAL_PORTS" ]; then \
     fi
 
 # Command to run the server based on mode
-CMD ["sh", "-c", "if [ \"$SERVER_MODE\" = \"static\" ]; then bun run serve; else bun run ${STARTUP_SCRIPT}; fi"] 
+CMD ["sh", "-c", "if [ \"$SERVER_MODE\" = \"static\" ]; then 'bun run serve'; else 'bun run ${STARTUP_SCRIPT}'; fi"] 
