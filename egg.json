@@ -3,9 +3,9 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-04-10T13:22:28+02:00",
+    "exported_at": "2025-04-10T13:22:28+02:00",
     "name": "Balk",
-    "author": "nekom",
+    "author": "Nekoniyah",
     "description": "A Bun server runtime environment with static file serving support\r\n\r\nThis egg supports both static file serving and Bun applications.\r\nIt can be configured to run in either static or application mode.",
     "features": null,
     "docker_images": {
