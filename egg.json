@@ -1,0 +1,72 @@
+{
+    "id": "balk",
+    "name": "Balk",
+    "description": "A Bun server runtime environment with static file serving support",
+    "docker_image": "oven/bun:1",
+    "startup": "bun run start",
+    "config": {
+        "files": "config.json",
+        "startup": {
+            "done": "Balk server running",
+            "userInteraction": []
+        },
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "bun install",
+            "container": "bun",
+            "entrypoint": "bun"
+        }
+    },
+    "variables": [
+        {
+            "name": "SERVER_MODE",
+            "description": "Server mode (static or app)",
+            "default_value": "app",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|in:static,app"
+        },
+        {
+            "name": "MAIN_PORT",
+            "description": "Main port to run the server on",
+            "default_value": "3000",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|min:1|max:65535"
+        },
+        {
+            "name": "ADDITIONAL_PORTS",
+            "description": "Additional ports to expose (comma-separated)",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string"
+        },
+        {
+            "name": "SERVER_MEMORY",
+            "description": "Memory limit for the server",
+            "default_value": "512",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|min:128"
+        },
+        {
+            "name": "STARTUP_SCRIPT",
+            "description": "The script to run (e.g., start, dev, serve) - only used in app mode",
+            "default_value": "start",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string"
+        },
+        {
+            "name": "STATIC_DIR",
+            "description": "Directory containing static files - only used in static mode",
+            "default_value": "public",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string"
+        }
+    ]
+}
