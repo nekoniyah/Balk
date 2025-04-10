@@ -12,7 +12,7 @@
         "oven/bun:1": "oven/bun:1"
     },
     "file_denylist": [],
-    "startup": "if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == \"1\" ]]; then git pull; fi; if [[ ! -z {{NODE_PACKAGES}} ]]; then bun install {{NODE_PACKAGES}}; fi; if [[ ! -z {{UNNODE_PACKAGES}} ]]; then bun remove {{UNNODE_PACKAGES}}; fi; if [ -f /home/container/package.json ]; then bun install; fi; if [ \"{{SERVER_MODE}}\" == \"static\" ]; then bun run serve; else bun run {{STARTUP_SCRIPT}}; fi",
+    "startup": "if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == \"1\" ]]; then git pull; fi; if [[ ! -z {{BUN_PACKAGES}} ]]; then bun install {{BUN_PACKAGES}}; fi; if [[ ! -z {{UNBUN_PACKAGES}} ]]; then bun remove {{UNBUN_PACKAGES}}; fi; if [ -f /home/container/package.json ]; then bun install; fi; if [ \"{{SERVER_MODE}}\" == \"static\" ]; then bun run serve; else bun run {{STARTUP_SCRIPT}}; fi",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": [\r\n        \"Balk server running\",\r\n        \"Server started\",\r\n        \"Running\"\r\n    ]\r\n}",
