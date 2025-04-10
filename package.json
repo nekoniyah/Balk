@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "serve": "bun run serve.ts"
+        "serve": "bun run serve.ts",
+        "start": "bun run serve.ts"
     },
     "dependencies": {
         "bun-types": "latest"

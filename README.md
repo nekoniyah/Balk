@@ -46,8 +46,8 @@ A versatile Bun server runtime environment with static file serving support, des
 # Build the image
 docker build -t balk .
 
-# Run the container
-docker run -p 3000:3000 balk
+# Run the container (accessible from any network interface)
+docker run -p 0.0.0.0:3000:3000 balk
 ```
 
 ### Pterodactyl
@@ -78,6 +78,58 @@ bun install
 # Run in development mode
 bun run dev
 ```
+
+## Troubleshooting
+
+### Connection Issues
+
+If you can't access the server with IP and port, check the following:
+
+1. **Firewall Settings**:
+
+    - Ensure the port is open in your firewall
+    - For Docker: `sudo ufw allow 3000`
+    - For Pterodactyl: Check your server's firewall rules
+
+2. **Docker Network**:
+
+    - Use `0.0.0.0` as the host IP: `docker run -p 0.0.0.0:3000:3000 balk`
+    - Check if the container is running: `docker ps`
+    - Check container logs: `docker logs <container_id>`
+
+3. **Pterodactyl Specific**:
+
+    - Verify the server is running in the panel
+    - Check the server's allocation settings
+    - Ensure the port is properly allocated in Pterodactyl
+
+4. **Application Configuration**:
+
+    - Make sure your application is binding to `0.0.0.0` and not just `localhost`
+    - Verify the correct port is being used in your application
+    - Check if the application is actually listening on the port
+
+5. **Network Configuration**:
+    - Try accessing via `localhost` or `127.0.0.1` first
+    - If using a VPS, ensure the IP is correct
+    - Check if the port is being used by another service
+
+### Common Solutions
+
+1. **For Docker**:
+
+    ```bash
+    # Check if port is in use
+    sudo lsof -i :3000
+
+    # Check container network
+    docker inspect <container_id>
+    ```
+
+2. **For Pterodactyl**:
+    - Check the server's network settings in the panel
+    - Verify the allocation is correct
+    - Check the server's console for any errors
 
 ## License
 
